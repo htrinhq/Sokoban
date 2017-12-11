@@ -9,17 +9,17 @@
 #define SOKO_H
 
 struct pos {
-        char **map;
-        char **copy;
-        char *buf;
-        int px;
-        int xfirst;
-        int yfirst;
-        int py;
-        int nbline;
-        int length;
-        int bo;
-        int nbp;
+	char **map;
+	char **copy;
+	char *buf;
+	int px;
+	int xfirst;
+	int yfirst;
+	int py;
+	int nbline;
+	int length;
+	int bo;
+	int nbp;
 };
 
 typedef struct pos pos_t;
