@@ -5,7 +5,9 @@
 ##
 ##
 
-SRC	=	source/main.c
+SRC	=	source/main.c	\
+		source/my_sokoban.c	\
+		source/initiation.c
 
 OBJ	=	$(SRC:.c=.o)
 
