@@ -31,9 +31,11 @@ void change_line(pos_t *pos, int *x, int *y, int i)
 {
         if (pos->buf[i] == '\n') {
                 pos->map[*y][*x] = '\0';
+                pos->copy[*y] = my_strdup(pos->map[*y]);
                 *x = 0;
                 *y = *y + 1;
                 pos->map[*y] = malloc(sizeof(char) * pos->length);
+                pos->copy[*y] = malloc(sizeof(char) * pos->length);
         } else
                 *x = *x + 1;
 }
@@ -41,8 +43,8 @@ void change_line(pos_t *pos, int *x, int *y, int i)
 void find_player(pos_t *pos, int x, int y, int i)
 {
         if (pos->buf[i] == 'P') {
-                pos->px = x;
-                pos->py = y;
+                pos->xfirst = x;
+                pos->yfirst = y;
         }
 }
 
@@ -79,5 +81,6 @@ void read_file(pos_t *pos, char *av)
                 exit(84);
         pos->buf = malloc(sizeof(char) * pos->length);
         pos->map = malloc(sizeof(char*) * pos->length);
+        pos->copy = malloc(sizeof(char*) * pos->length);
         close(fd);
 }

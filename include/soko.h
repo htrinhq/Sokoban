@@ -10,8 +10,11 @@
 
 struct pos {
         char **map;
+        char **copy;
         char *buf;
         int px;
+        int xfirst;
+        int yfirst;
         int py;
         int nbline;
         int length;
@@ -28,5 +31,7 @@ void move_player_up(pos_t *pos);
 void move_player_down(pos_t *pos);
 void move_player_left(pos_t *pos);
 void move_player_right(pos_t *pos);
+int my_strlen(const char *str);
+char *my_strdup(char *src);
 
 #endif

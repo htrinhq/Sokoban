@@ -8,7 +8,8 @@
 SRC	=	source/main.c	\
 		source/my_sokoban.c	\
 		source/initiation.c	\
-		source/player.c
+		source/player.c	\
+		source/basic_functions.c
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -25,6 +25,8 @@ void display_map(pos_t *pos)
 
 void get_input(pos_t *pos, int key)
 {
+        int y = 0;
+
         switch (key) {
                 case KEY_UP:
                         move_player_up(pos);
@@ -39,11 +41,36 @@ void get_input(pos_t *pos, int key)
                         move_player_right(pos);
                         break;
                 case 32:
-                        mvprintw(LINES / 2, COLS / 2, "RESET");
+                        while (pos->map[y]) {
+                                pos->map[y] = my_strdup(pos->copy[y]);
+                                y = y + 1;
+                        }
+                        my_sokoban(pos);
                         break;
                 case 113:
                         endwin();
                         exit(0);
+        }
+}
+
+void check_Ox(pos_t *pos, int *x, int y)
+{
+        while (pos->map[y][*x] != '\0') {
+                if (pos->map[y][*x] == ' ' && pos->copy[y][*x] == 'O')
+                        pos->map[y][*x] = 'O';
+                *x = *x + 1;
+        }
+}
+
+void check_O(pos_t *pos)
+{
+        int x = 0;
+        int y = 0;
+
+        while (pos->map[y]) {
+                check_Ox(pos, &x, y);
+                x = 0;
+                y = y + 1;
         }
 }
 
@@ -52,11 +79,14 @@ void my_sokoban(pos_t *pos)
         int key;
         WINDOW *win = initscr();
 
+        pos->px = pos->xfirst;
+        pos->py = pos->yfirst;
         keypad(win, true);
         while (1) {
+                refresh();
                 display_map(pos);
                 key = getch();
                 get_input(pos, key);
-                refresh();
+                check_O(pos);
         }
 }
