@@ -18,6 +18,8 @@ struct pos {
         int py;
         int nbline;
         int length;
+        int bo;
+        int nbp;
 };
 
 typedef struct pos pos_t;
@@ -33,5 +35,13 @@ void move_player_left(pos_t *pos);
 void move_player_right(pos_t *pos);
 int my_strlen(const char *str);
 char *my_strdup(char *src);
+void box_right(pos_t *pos);
+void box_left(pos_t *pos);
+void box_down(pos_t *pos);
+void box_up(pos_t *pos);
+void check_lose(pos_t *pos, int *x, int y);
+void check_Ox(pos_t *pos, int *x, int y);
+void check_O(pos_t *pos);
+void check_win(pos_t *pos);
 
 #endif

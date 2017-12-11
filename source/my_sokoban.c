@@ -23,10 +23,32 @@ void display_map(pos_t *pos)
         }
 }
 
-void get_input(pos_t *pos, int key)
+void reset(pos_t *pos)
 {
         int y = 0;
 
+        while (pos->map[y]) {
+                pos->map[y] = my_strdup(pos->copy[y]);
+                y = y + 1;
+        }
+        my_sokoban(pos);
+}
+
+void reset_quit(pos_t *pos, int key)
+{
+        switch (key) {
+                case 32:
+                        reset(pos);
+                        break;
+                case 113:
+                        endwin();
+                        free(pos);
+                        exit(0);
+        }
+}
+
+void get_input(pos_t *pos, int key)
+{
         switch (key) {
                 case KEY_UP:
                         move_player_up(pos);
@@ -40,37 +62,8 @@ void get_input(pos_t *pos, int key)
                 case KEY_RIGHT:
                         move_player_right(pos);
                         break;
-                case 32:
-                        while (pos->map[y]) {
-                                pos->map[y] = my_strdup(pos->copy[y]);
-                                y = y + 1;
-                        }
-                        my_sokoban(pos);
-                        break;
-                case 113:
-                        endwin();
-                        exit(0);
-        }
-}
-
-void check_Ox(pos_t *pos, int *x, int y)
-{
-        while (pos->map[y][*x] != '\0') {
-                if (pos->map[y][*x] == ' ' && pos->copy[y][*x] == 'O')
-                        pos->map[y][*x] = 'O';
-                *x = *x + 1;
-        }
-}
-
-void check_O(pos_t *pos)
-{
-        int x = 0;
-        int y = 0;
-
-        while (pos->map[y]) {
-                check_Ox(pos, &x, y);
-                x = 0;
-                y = y + 1;
+                default:
+                        reset_quit(pos, key);
         }
 }
 
@@ -83,10 +76,12 @@ void my_sokoban(pos_t *pos)
         pos->py = pos->yfirst;
         keypad(win, true);
         while (1) {
+                pos->bo = 0;
                 refresh();
                 display_map(pos);
                 key = getch();
                 get_input(pos, key);
                 check_O(pos);
+                check_win(pos);
         }
 }

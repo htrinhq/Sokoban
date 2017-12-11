@@ -20,14 +20,8 @@ void move_player_up(pos_t *pos)
                         pos->map[pos->py][pos->px] = ' ';
                         pos->map[pos->py - 1][pos->px] = 'P';
                         pos->py = pos->py - 1;
-                } else {
-                        if (pos->map[pos->py - 2][pos->px] == ' ' || pos->map[pos->py - 2][pos->px] == 'O') {
-                                pos->map[pos->py][pos->px] = ' ';
-                                pos->map[pos->py - 1][pos->px] = 'P';
-                                pos->map[pos->py - 2][pos->px] = 'X';
-                                pos->py = pos->py - 1;
-                        }
-                }
+                } else
+                        box_up(pos);
         }
 }
 
@@ -38,14 +32,8 @@ void move_player_down(pos_t *pos)
                         pos->map[pos->py][pos->px] = ' ';
                         pos->map[pos->py + 1][pos->px] = 'P';
                         pos->py = pos->py + 1;
-                } else {
-                        if (pos->map[pos->py + 2][pos->px] == ' ' || pos->map[pos->py + 2][pos->px] == 'O') {
-                                pos->map[pos->py][pos->px] = ' ';
-                                pos->map[pos->py + 1][pos->px] = 'P';
-                                pos->map[pos->py + 2][pos->px] = 'X';
-                                pos->py = pos->py + 1;
-                        }
-                }
+                } else
+                        box_down(pos);
         }
 }
 
@@ -56,14 +44,8 @@ void move_player_left(pos_t *pos)
                         pos->map[pos->py][pos->px] = ' ';
                         pos->map[pos->py][pos->px - 1] = 'P';
                         pos->px = pos->px - 1;
-                } else {
-                        if (pos->map[pos->py][pos->px - 2] == ' ' || pos->map[pos->py][pos->px - 2] == 'O') {
-                                pos->map[pos->py][pos->px] = ' ';
-                                pos->map[pos->py][pos->px - 1] = 'P';
-                                pos->map[pos->py][pos->px - 2] = 'X';
-                                pos->px = pos->px - 1;
-                        }
-                }
+                } else
+                        box_left(pos);
         }
 }
 
@@ -74,13 +56,7 @@ void move_player_right(pos_t *pos)
                         pos->map[pos->py][pos->px] = ' ';
                         pos->map[pos->py][pos->px + 1] = 'P';
                         pos->px = pos->px + 1;
-                } else {
-                        if (pos->map[pos->py][pos->px + 2] == ' ' || pos->map[pos->py][pos->px + 2] == 'O') {
-                                pos->map[pos->py][pos->px] = ' ';
-                                pos->map[pos->py][pos->px + 1] = 'P';
-                                pos->map[pos->py][pos->px + 2] = 'X';
-                                pos->px = pos->px + 1;
-                        }
-                }
+                } else
+                        box_right(pos);
         }
 }

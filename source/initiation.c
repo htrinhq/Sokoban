@@ -48,6 +48,17 @@ void find_player(pos_t *pos, int x, int y, int i)
         }
 }
 
+void error(pos_t *pos, int i)
+{
+        if (pos->buf[i] != ' ' && pos->buf[i] != 'P' &&\
+        pos->buf[i] != 'X' && pos->buf[i] != 'O' &&\
+        pos->buf[i] != '#' && pos->buf[i] != '\0' &&\
+        pos->buf[i] != '\n')
+                exit(84);
+        if (pos->buf[i] == 'P')
+                pos->nbp = pos->nbp + 1;
+}
+
 void fill_map(pos_t *pos, char *av)
 {
         int i = 0;
@@ -59,11 +70,14 @@ void fill_map(pos_t *pos, char *av)
         read(fd, pos->buf, pos->length + 1);
         pos->map[y] = malloc(sizeof(char) * pos->length);
         while (i != pos->length) {
+                error(pos, i);
                 pos->map[y][x] = pos->buf[i];
                 find_player(pos, x, y, i);
                 change_line(pos, &x, &y, i);
                 i = i + 1;
         }
+        if (pos->nbp != 1)
+                exit(84);
         pos->map[y][x] = '\0';
         pos->map[y + 1] = '\0';
         pos->nbline = y;
