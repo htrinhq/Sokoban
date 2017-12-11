@@ -15,17 +15,12 @@
 
 int main(int ac, char **av)
 {
-        //int y = 0;
-        pos_t *position = malloc(sizeof(pos_t));
+        pos_t *pos = malloc(sizeof(pos_t));
 
         if (ac != 2)
                 return (84);
-        read_file(position, av[1]);
-        fill_map(position, av[1]);
-        /*while (y < position->nbline) {
-                printf("%s\n", position->map[y]);
-                y = y + 1;
-        }*/
-        my_sokoban(position);
+        read_file(pos, av[1]);
+        fill_map(pos, av[1]);
+        my_sokoban(pos);
         return (0);
 }

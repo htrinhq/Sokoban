@@ -27,18 +27,26 @@ int get_length(int fd)
         return (size);
 }
 
-void change_line(pos_t *position, int *x, int *y, int i)
+void change_line(pos_t *pos, int *x, int *y, int i)
 {
-        if (position->buf[i] == '\n') {
-                position->map[*y][*x] = '\0';
+        if (pos->buf[i] == '\n') {
+                pos->map[*y][*x] = '\0';
                 *x = 0;
                 *y = *y + 1;
-                position->map[*y] = malloc(sizeof(char) * position->length);
+                pos->map[*y] = malloc(sizeof(char) * pos->length);
         } else
                 *x = *x + 1;
 }
 
-void fill_map(pos_t *position, char *av)
+void find_player(pos_t *pos, int x, int y, int i)
+{
+        if (pos->buf[i] == 'P') {
+                pos->px = x;
+                pos->py = y;
+        }
+}
+
+void fill_map(pos_t *pos, char *av)
 {
         int i = 0;
         int y = 0;
@@ -46,29 +54,30 @@ void fill_map(pos_t *position, char *av)
         int fd;
 
         fd = open(av, O_RDONLY);
-        read(fd, position->buf, position->length + 1);
-        position->map[y] = malloc(sizeof(char) * position->length);
-        while (i != position->length) {
-                position->map[y][x] = position->buf[i];
-                change_line(position, &x, &y, i);
+        read(fd, pos->buf, pos->length + 1);
+        pos->map[y] = malloc(sizeof(char) * pos->length);
+        while (i != pos->length) {
+                pos->map[y][x] = pos->buf[i];
+                find_player(pos, x, y, i);
+                change_line(pos, &x, &y, i);
                 i = i + 1;
         }
-        position->map[y][x] = '\0';
-        position->map[y + 1] = '\0';
-        position->nbline = y;
+        pos->map[y][x] = '\0';
+        pos->map[y + 1] = '\0';
+        pos->nbline = y;
 }
 
-void read_file(pos_t *position, char *av)
+void read_file(pos_t *pos, char *av)
 {
         int fd;
 
         fd = open(av, O_RDONLY);
 	if (fd == -1)
 		exit(84);
-        position->length = get_length(fd);
-        if (position->length == 0)
+        pos->length = get_length(fd);
+        if (pos->length == 0)
                 exit(84);
-        position->buf = malloc(sizeof(char) * position->length);
-        position->map = malloc(sizeof(char*) * position->length);
+        pos->buf = malloc(sizeof(char) * pos->length);
+        pos->map = malloc(sizeof(char*) * pos->length);
         close(fd);
 }
