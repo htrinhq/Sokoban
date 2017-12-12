@@ -17,7 +17,9 @@ void helper(void)
 {
 	my_printf("\nUSAGE\n");
 	my_printf("\t./my_sokoban map\n\n");
+	my_printf("\t./my_sokoban -h\n\n");
 	my_printf("DESCRIPTION\n");
+        my_printf("\t-h\tdisplay help\n\n");
 	my_printf("\tmap\tfile representing the wharehouse map,");
 	my_printf(" containing '#' for walls, 'P' for the player,\n");
 	my_printf("\t\t'X' for boxes and 'O' for storage locations.\n\n");
