@@ -18,7 +18,7 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	my_sokoban
 
-CFLAGS	=	-W -Wall -Wextra -I include -g
+CFLAGS	=	-W -Wall -Wextra -I include
 
 LDFLAGS	=	-lcurses -L ./lib/my -lprintf
 

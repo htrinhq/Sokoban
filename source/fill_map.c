@@ -15,7 +15,7 @@
 
 void helper(void)
 {
-	my_printf("USAGE\n");
+	my_printf("\nUSAGE\n");
 	my_printf("\t./my_sokoban map\n\n");
 	my_printf("DESCRIPTION\n");
 	my_printf("\tmap\tfile representing the wharehouse map,");
