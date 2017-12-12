@@ -20,8 +20,12 @@ int main(int ac, char **av)
         pos->nbp = 0;
         if (ac != 2)
                 return (84);
-        read_file(pos, av[1]);
-        fill_map(pos, av[1]);
-        my_sokoban(pos);
+	if (av[1][0] == '-' && av[1][1] == 'h') {
+		helper();
+	} else {
+	        read_file(pos, av[1]);
+	        fill_map(pos, av[1]);
+	        my_sokoban(pos);
+	}
         return (0);
 }

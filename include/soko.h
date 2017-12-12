@@ -46,5 +46,7 @@ void check_win(pos_t *pos);
 void into_the_while(pos_t *pos, int *x, int *y, int i);
 void find_player(pos_t *pos, int *x, int *y, int i);
 void error(pos_t *pos, int i);
+int my_printf(const char *format, ...);
+void helper(void);
 
 #endif

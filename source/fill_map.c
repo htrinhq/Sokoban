@@ -13,6 +13,18 @@
 #include <fcntl.h>
 #include "soko.h"
 
+void helper(void)
+{
+	my_printf("USAGE\n");
+	my_printf("\t./my_sokoban map\n\n");
+	my_printf("DESCRIPTION\n");
+	my_printf("\tmap\tfile representing the wharehouse map,");
+	my_printf(" containing '#' for walls, 'P' for the player,\n");
+	my_printf("\t\t'X' for boxes and 'O' for storage locations.\n\n");
+	my_printf("\tSPACE\treset level.\n\n");
+	my_printf("\tQ\tquit my_sokoban.\n\n");
+}
+
 void into_the_while(pos_t *pos, int *x, int *y, int i)
 {
         error(pos, i);
