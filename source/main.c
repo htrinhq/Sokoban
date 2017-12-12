@@ -17,7 +17,6 @@ int main(int ac, char **av)
 {
         pos_t *pos = malloc(sizeof(pos_t));
 
-        //pos->bo = 0;
         pos->nbp = 0;
         if (ac != 2)
                 return (84);

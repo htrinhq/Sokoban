@@ -43,5 +43,8 @@ void check_lose(pos_t *pos, int *x, int y);
 void check_Ox(pos_t *pos, int *x, int y);
 void check_O(pos_t *pos);
 void check_win(pos_t *pos);
+void into_the_while(pos_t *pos, int *x, int *y, int i);
+void find_player(pos_t *pos, int *x, int *y, int i);
+void error(pos_t *pos, int i);
 
 #endif
