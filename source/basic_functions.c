@@ -15,22 +15,22 @@
 
 int my_strlen(const char *str)
 {
-        int x = 0;
+	int x = 0;
 
-        while (str[x])
-                x = x + 1;
-        return (x);
+	while (str[x])
+		x = x + 1;
+	return (x);
 }
 
 char *my_strdup(char *src)
 {
-        int x = 0;
-        char *copy = malloc(sizeof(char) * my_strlen(src));
+	int x = 0;
+	char *copy = malloc(sizeof(char) * my_strlen(src));
 
-        while (src[x] != '\0') {
-                copy[x] = src[x];
-                x = x + 1;
-        }
-        copy[x] = '\0';
-        return (copy);
+	while (src[x] != '\0') {
+		copy[x] = src[x];
+		x = x + 1;
+	}
+	copy[x] = '\0';
+	return (copy);
 }

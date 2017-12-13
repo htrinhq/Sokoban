@@ -15,48 +15,48 @@
 
 void move_player_up(pos_t *pos)
 {
-        if (pos->map[pos->py - 1][pos->px] != '#') {
-                if (pos->map[pos->py - 1][pos->px] != 'X') {
-                        pos->map[pos->py][pos->px] = ' ';
-                        pos->map[pos->py - 1][pos->px] = 'P';
-                        pos->py = pos->py - 1;
-                } else
-                        box_up(pos);
-        }
+	if (pos->map[pos->py - 1][pos->px] != '#') {
+		if (pos->map[pos->py - 1][pos->px] != 'X') {
+			pos->map[pos->py][pos->px] = ' ';
+			pos->map[pos->py - 1][pos->px] = 'P';
+			pos->py = pos->py - 1;
+		} else
+			box_up(pos);
+	}
 }
 
 void move_player_down(pos_t *pos)
 {
-        if (pos->map[pos->py + 1][pos->px] != '#') {
-                if (pos->map[pos->py + 1][pos->px] != 'X') {
-                        pos->map[pos->py][pos->px] = ' ';
-                        pos->map[pos->py + 1][pos->px] = 'P';
-                        pos->py = pos->py + 1;
-                } else
-                        box_down(pos);
-        }
+	if (pos->map[pos->py + 1][pos->px] != '#') {
+		if (pos->map[pos->py + 1][pos->px] != 'X') {
+			pos->map[pos->py][pos->px] = ' ';
+			pos->map[pos->py + 1][pos->px] = 'P';
+			pos->py = pos->py + 1;
+		} else
+			box_down(pos);
+	}
 }
 
 void move_player_left(pos_t *pos)
 {
-        if (pos->map[pos->py][pos->px - 1] != '#') {
-                if (pos->map[pos->py][pos->px - 1] != 'X') {
-                        pos->map[pos->py][pos->px] = ' ';
-                        pos->map[pos->py][pos->px - 1] = 'P';
-                        pos->px = pos->px - 1;
-                } else
-                        box_left(pos);
-        }
+	if (pos->map[pos->py][pos->px - 1] != '#') {
+		if (pos->map[pos->py][pos->px - 1] != 'X') {
+			pos->map[pos->py][pos->px] = ' ';
+			pos->map[pos->py][pos->px - 1] = 'P';
+			pos->px = pos->px - 1;
+		} else
+			box_left(pos);
+	}
 }
 
 void move_player_right(pos_t *pos)
 {
-        if (pos->map[pos->py][pos->px + 1] != '#') {
-                if (pos->map[pos->py][pos->px + 1] != 'X') {
-                        pos->map[pos->py][pos->px] = ' ';
-                        pos->map[pos->py][pos->px + 1] = 'P';
-                        pos->px = pos->px + 1;
-                } else
-                        box_right(pos);
-        }
+	if (pos->map[pos->py][pos->px + 1] != '#') {
+		if (pos->map[pos->py][pos->px + 1] != 'X') {
+			pos->map[pos->py][pos->px] = ' ';
+			pos->map[pos->py][pos->px + 1] = 'P';
+			pos->px = pos->px + 1;
+		} else
+			box_right(pos);
+	}
 }

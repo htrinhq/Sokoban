@@ -15,19 +15,19 @@
 
 int main(int ac, char **av)
 {
-        pos_t *pos = malloc(sizeof(pos_t));
+	pos_t *pos = malloc(sizeof(pos_t));
 
-        pos->nbp = 0;
+	pos->nbp = 0;
 	pos->startnbx = 0;
-        if (ac != 2) {
+	if (ac != 2) {
 		helper();
-                return (84);
+		return (84);
 	} else if (av[1][0] == '-' && av[1][1] == 'h') {
 		helper();
 	} else {
-	        read_file(pos, av[1]);
-	        fill_map(pos, av[1]);
-	        my_sokoban(pos);
+		read_file(pos, av[1]);
+		fill_map(pos, av[1]);
+		my_sokoban(pos);
 	}
-        return (0);
+	return (0);
 }
