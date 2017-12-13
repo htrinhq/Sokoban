@@ -20,6 +20,8 @@ struct pos {
 	int length;
 	int bo;
 	int nbp;
+	int nbx;
+	int startnbx;
 };
 
 typedef struct pos pos_t;

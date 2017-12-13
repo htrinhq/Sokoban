@@ -18,6 +18,7 @@ int main(int ac, char **av)
         pos_t *pos = malloc(sizeof(pos_t));
 
         pos->nbp = 0;
+	pos->startnbx = 0;
         if (ac != 2) {
 		helper();
                 return (84);

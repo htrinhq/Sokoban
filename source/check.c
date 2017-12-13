@@ -19,13 +19,14 @@ void check_lose(pos_t *pos, int *x, int y)
          pos->copy[y][*x] != 'O') ||\
          (pos->map[y - 1][*x] == '#' && pos->map[y][*x - 1] == '#' &&\
          pos->copy[y][*x] != 'O')) {
-                endwin();
-                free(pos);
-                exit(1);
+                 pos->nbx = pos->nbx - 1;
         } else if ((pos->map[y + 1][*x] == '#' && pos->map[y][*x + 1] == '#' &&\
         pos->copy[y][*x] != 'O') ||\
          (pos->map[y + 1][*x] == '#' && pos->map[y][*x - 1] == '#' &&\
          pos->copy[y][*x] != 'O')) {
+                pos->nbx = pos->nbx - 1;
+        }
+        if (pos->nbx == 0) {
                 endwin();
                 free(pos);
                 exit(1);

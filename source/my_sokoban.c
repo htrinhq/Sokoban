@@ -77,6 +77,7 @@ void my_sokoban(pos_t *pos)
         keypad(win, true);
         while (1) {
                 pos->bo = 0;
+		pos->nbx = pos->startnbx;
                 refresh();
                 display_map(pos);
                 key = getch();

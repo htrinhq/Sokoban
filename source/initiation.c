@@ -57,6 +57,8 @@ void error(pos_t *pos, int i)
                 exit(84);
         if (pos->buf[i] == 'P')
                 pos->nbp = pos->nbp + 1;
+	else if (pos->buf[i] == 'X')
+		pos->startnbx = pos->startnbx + 1;
 }
 
 void read_file(pos_t *pos, char *av)
