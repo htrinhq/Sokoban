@@ -82,7 +82,7 @@ void my_sokoban(pos_t *pos)
 		display_map(pos);
 		key = getch();
 		get_input(pos, key);
-		check_O(pos);
+		check_o(pos);
 		check_win(pos);
 	}
 }

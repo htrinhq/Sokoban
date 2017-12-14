@@ -33,7 +33,7 @@ void check_lose(pos_t *pos, int *x, int y)
 	}
 }
 
-void check_Ox(pos_t *pos, int *x, int y)
+void check_ox(pos_t *pos, int *x, int y)
 {
 	while (pos->map[y][*x] != '\0') {
 		if (pos->map[y][*x] == ' ' && pos->copy[y][*x] == 'O')
@@ -47,13 +47,13 @@ void check_Ox(pos_t *pos, int *x, int y)
 	}
 }
 
-void check_O(pos_t *pos)
+void check_o(pos_t *pos)
 {
 	int x = 0;
 	int y = 0;
 
 	while (pos->map[y]) {
-		check_Ox(pos, &x, y);
+		check_ox(pos, &x, y);
 		x = 0;
 		y = y + 1;
 	}
