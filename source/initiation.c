@@ -51,9 +51,9 @@ void find_player(pos_t *pos, int *x, int *y, int i)
 void error(pos_t *pos, int i)
 {
 	if (pos->buf[i] != ' ' && pos->buf[i] != 'P' &&\
-	    pos->buf[i] != 'X' && pos->buf[i] != 'O' &&\
-	    pos->buf[i] != '#' && pos->buf[i] != '\0' &&\
-	    pos->buf[i] != '\n')
+	pos->buf[i] != 'X' && pos->buf[i] != 'O' &&\
+	pos->buf[i] != '#' && pos->buf[i] != '\0' &&\
+	pos->buf[i] != '\n')
 		exit(84);
 	if (pos->buf[i] == 'P')
 		pos->nbp = pos->nbp + 1;
