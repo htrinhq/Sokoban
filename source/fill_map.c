@@ -15,16 +15,16 @@
 
 void helper(void)
 {
-	my_printf("\nUSAGE\n");
-	my_printf("\t./my_sokoban map\n\n");
-	my_printf("\t./my_sokoban -h\n\n");
-	my_printf("DESCRIPTION\n");
-	my_printf("\t-h\tdisplay help\n\n");
-	my_printf("\tmap\tfile representing the wharehouse map,");
-	my_printf(" containing '#' for walls, 'P' for the player,\n");
-	my_printf("\t\t'X' for boxes and 'O' for storage locations.\n\n");
-	my_printf("\tSPACE\treset level.\n\n");
-	my_printf("\tQ\tquit my_sokoban.\n\n");
+	write(1, "\nUSAGE\n", 7);
+	write(1, "\t./my_sokoban map\n\n", 19);
+	write(1, "\t./my_sokoban -h\n\n", 18);
+	write(1, "DESCRIPTION\n", 12);
+	write(1, "\t-h\tdisplay help\n\n", 18);
+	write(1, "\tmap\tfile representing the wharehouse map,", 42);
+	write(1, " containing '#' for walls, 'P' for the player,\n", 47);
+	write(1, "\t\t'X' for boxes and 'O' for storage locations.\n\n", 48);
+	write(1, "\tSPACE\treset level.\n\n", 21);
+	write(1, "\tQ\tquit my_sokoban.\n\n", 21);
 }
 
 void into_the_while(pos_t *pos, int *x, int *y, int i)
