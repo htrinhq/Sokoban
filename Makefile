@@ -20,25 +20,19 @@ NAME	=	my_sokoban
 
 CFLAGS	=	-W -Wall -Wextra -I include
 
-LDFLAGS	=	-lcurses -L ./lib/my -lprintf
-
-all:	libmake $(NAME)
+LDFLAGS	=	-lcurses
 
 $(NAME):	$(OBJ)
 	gcc -o $(NAME) $(OBJ) $(LDFLAGS)
 
-libmake:
-	make -C ./lib/my
-	rm -f $(OBJ)
+all:	$(NAME)
 
 clean:
-	make clean -C ./lib/my/
 	rm -f $(OBJ)
 
 fclean:	clean
-	make fclean -C ./lib/my/
 	rm -f $(NAME)
 
 re:	fclean all
 
-PHONY: fclean clean all re libmake
+PHONY: fclean clean all re
